@@ -5,21 +5,29 @@ import { Container, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
+import paginationFactory from "react-bootstrap-table2-paginator";
+
+const { SearchBar } = Search;
+
 const columns = [
   {
     dataField: "id",
     text: "ID",
+    sort: true,
     headerStyle: () => {
       return { width: "5%" };
     }
   },
   {
     dataField: "nama",
-    text: "Nama"
+    text: "Nama",
+    sort: true
   },
   {
     dataField: "alamat",
-    text: "Alamat"
+    text: "Alamat",
+    sort: true
   },
   {
     dataField: "link",
@@ -45,10 +53,36 @@ const columns = [
   }
 ];
 
+const defaultSorted = [
+  {
+    dataField: "nama",
+    oder: "desc"
+  }
+];
+
 const TableComponent = props => {
   return (
     <Container>
-      <BootstrapTable keyField="id" data={props.users} columns={columns} />;
+      <ToolkitProvider
+        bootstrap4
+        keyField="id"
+        data={props.users}
+        columns={columns}
+        defaultSorted={defaultSorted}
+        search
+      >
+        {props => (
+          <div>
+            <div className="float-right">
+              <SearchBar {...props.searchProps} placeholder="Pencarian ..." />
+            </div>
+            <BootstrapTable
+              {...props.baseProps}
+              pagination={paginationFactory()}
+            />
+          </div>
+        )}
+      </ToolkitProvider>
     </Container>
   );
 };
