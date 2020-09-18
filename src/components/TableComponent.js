@@ -7,13 +7,15 @@ import {
   faInfo,
   faEdit,
   faTrash,
-  faUserPlus
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
 import { Link } from "react-router-dom";
+
+import { connect } from "react-redux";
 
 const { SearchBar } = Search;
 
@@ -24,17 +26,17 @@ const columns = [
     sort: true,
     headerStyle: () => {
       return { width: "5%" };
-    }
+    },
   },
   {
     dataField: "nama",
     text: "Nama",
-    sort: true
+    sort: true,
   },
   {
     dataField: "alamat",
     text: "Alamat",
-    sort: true
+    sort: true,
   },
   {
     dataField: "link",
@@ -62,18 +64,18 @@ const columns = [
           </Link>
         </>
       );
-    }
-  }
+    },
+  },
 ];
 
 const defaultSorted = [
   {
     dataField: "nama",
-    oder: "desc"
-  }
+    oder: "desc",
+  },
 ];
 
-const TableComponent = props => {
+const TableComponent = (props) => {
   return (
     <Container>
       <ToolkitProvider
@@ -84,7 +86,7 @@ const TableComponent = props => {
         defaultSorted={defaultSorted}
         search
       >
-        {props => (
+        {(props) => (
           <div>
             <Row>
               <Col>
@@ -116,4 +118,10 @@ const TableComponent = props => {
   );
 };
 
-export default TableComponent;
+const mapStateToProps = (state) => {
+  return {
+    users: state.users.users,
+  };
+};
+
+export default connect(mapStateToProps, null)(TableComponent);

@@ -8,40 +8,14 @@ import CreateUserContainer from "./containers/CreateUserContainer";
 import EditUserContainer from "./containers/EditUserContainer";
 import DetailUserContainer from "./containers/DetailUserContainer";
 
-const App = props => {
-  const state = {
-    title: "Wahidev Academy ~ ATM",
-    users: [
-      {
-        id: 1,
-        nama: "desta",
-        alamat: "Jakarta",
-        umur: 30,
-        nohp: "08989018913"
-      },
-      {
-        id: 2,
-        nama: "fadilah",
-        alamat: "Jakarta",
-        umur: 30,
-        nohp: "08989018913"
-      },
-      {
-        id: 3,
-        nama: "budi",
-        alamat: "Jakarta",
-        umur: 30,
-        nohp: "08989018913"
-      }
-    ]
-  };
+const App = (props) => {
   return (
     <>
       <NavbarComponent />
-      <JumboTronComponent title={state.title} />
+      <JumboTronComponent />
       <Router>
         <Route path="/" exact>
-          <HomeContainer users={state.users} />
+          <HomeContainer />
         </Route>
         <Route path="/create" exact>
           <CreateUserContainer />
