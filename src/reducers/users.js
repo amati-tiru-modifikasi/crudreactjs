@@ -1,8 +1,10 @@
-import { GET_USERS_LIST } from "../actions/userActions";
+import { GET_USERS_LIST, GET_USER_DETAIL } from "../actions/userActions";
 
 const initialState = {
   getUsersList: false,
   errorUsersList: false,
+  getUserDetail: false,
+  errorUserDetail: false,
   title: "Wahidev Academy ~ ATM",
 };
 
@@ -13,6 +15,12 @@ const users = (state = initialState, action) => {
         ...state,
         getUsersList: action.payload.data,
         errorUsersList: action.payload.errorMessage,
+      };
+    case GET_USER_DETAIL:
+      return {
+        ...state,
+        getUserDetail: action.payload.data,
+        errorUserDetail: action.payload.errorMessage,
       };
 
     default:
