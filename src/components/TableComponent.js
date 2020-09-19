@@ -17,6 +17,8 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
+import { Spinner } from "reactstrap";
+
 const { SearchBar } = Search;
 
 const columns = [
@@ -115,7 +117,15 @@ const TableComponent = (props) => {
             </div>
           )}
         </ToolkitProvider>
-      ) : null}
+      ) : (
+        <div className="text-center">
+          {props.errorUsersList ? (
+            <h1>{props.errorMessage}</h1>
+          ) : (
+            <Spinner color="primary" />
+          )}
+        </div>
+      )}
     </Container>
   );
 };
