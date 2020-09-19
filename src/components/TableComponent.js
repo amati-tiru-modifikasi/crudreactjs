@@ -78,49 +78,52 @@ const defaultSorted = [
 const TableComponent = (props) => {
   return (
     <Container>
-      <ToolkitProvider
-        bootstrap4
-        keyField="id"
-        data={props.users}
-        columns={columns}
-        defaultSorted={defaultSorted}
-        search
-      >
-        {(props) => (
-          <div>
-            <Row>
-              <Col>
-                <Link to={"create/"}>
-                  <Button color="primary" className="mr-2">
-                    <FontAwesomeIcon icon={faUserPlus} />
-                    Tambah
-                  </Button>
-                </Link>
-              </Col>
-              <Col>
-                <div className="float-right">
-                  <SearchBar
-                    {...props.searchProps}
-                    placeholder="Pencarian ..."
-                  />
-                </div>
-              </Col>
-            </Row>
+      {props.getUsersList ? (
+        <ToolkitProvider
+          bootstrap4
+          keyField="id"
+          data={props.getUsersList}
+          columns={columns}
+          defaultSorted={defaultSorted}
+          search
+        >
+          {(props) => (
+            <div>
+              <Row>
+                <Col>
+                  <Link to={"create/"}>
+                    <Button color="primary" className="mr-2">
+                      <FontAwesomeIcon icon={faUserPlus} />
+                      Tambah
+                    </Button>
+                  </Link>
+                </Col>
+                <Col>
+                  <div className="float-right">
+                    <SearchBar
+                      {...props.searchProps}
+                      placeholder="Pencarian ..."
+                    />
+                  </div>
+                </Col>
+              </Row>
 
-            <BootstrapTable
-              {...props.baseProps}
-              pagination={paginationFactory()}
-            />
-          </div>
-        )}
-      </ToolkitProvider>
+              <BootstrapTable
+                {...props.baseProps}
+                pagination={paginationFactory()}
+              />
+            </div>
+          )}
+        </ToolkitProvider>
+      ) : null}
     </Container>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users.users,
+    getUsersList: state.users.getUsersList,
+    errorUsersList: state.users.errorUsersList,
   };
 };
 

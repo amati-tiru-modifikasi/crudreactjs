@@ -1,30 +1,23 @@
+import { GET_USERS_LIST } from "../actions/userActions";
+
 const initialState = {
-  users: [
-    {
-      id: 1,
-      nama: "desta",
-      alamat: "Jakarta",
-      umur: 30,
-      nohp: "08989018913",
-    },
-    {
-      id: 2,
-      nama: "fadilah",
-      alamat: "Jakarta",
-      umur: 30,
-      nohp: "08989018913",
-    },
-    {
-      id: 3,
-      nama: "bantal",
-      alamat: "Jakarta",
-      umur: 30,
-      nohp: "08989018913",
-    },
-  ],
+  getUsersList: false,
+  errorUsersList: false,
   title: "Wahidev Academy ~ ATM",
 };
 
-export default function users(state = initialState, action) {
-  return state;
-}
+const users = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_USERS_LIST:
+      return {
+        ...state,
+        getUsersList: action.payload.data,
+        errorUsersList: action.payload.errorMessage,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default users;
