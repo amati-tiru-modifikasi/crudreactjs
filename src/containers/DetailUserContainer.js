@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 
+import { connect } from "react-redux";
+import { getUserDetail } from "../actions/userActions";
+import DetailUserComponent from "../components/DetailUserComponent";
+
 class DetailUserContainer extends Component {
+  componentDidMount() {
+    this.props.dispatch(getUserDetail(this.props.match.params.id));
+  }
   render() {
-    return <Container>Detail user</Container>;
+    return (
+      <Container>
+        Detail user <DetailUserComponent />
+      </Container>
+    );
   }
 }
 
-export default DetailUserContainer;
+export default connect()(DetailUserContainer);

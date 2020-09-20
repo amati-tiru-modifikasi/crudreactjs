@@ -14,18 +14,10 @@ const App = (props) => {
       <NavbarComponent />
       <JumboTronComponent />
       <Router>
-        <Route path="/" exact>
-          <HomeContainer />
-        </Route>
-        <Route path="/create" exact>
-          <CreateUserContainer />
-        </Route>
-        <Route path="/edit/:id" exact>
-          <EditUserContainer />
-        </Route>
-        <Route path="/detail/:id" exact>
-          <DetailUserContainer />
-        </Route>
+        <Route path="/" component={HomeContainer} exact />
+        <Route path="/create" component={CreateUserContainer} exact />
+        <Route path="/edit/:id" component={EditUserContainer} exact />
+        <Route path="/detail/:id" component={DetailUserContainer} exact />
       </Router>
     </>
   );

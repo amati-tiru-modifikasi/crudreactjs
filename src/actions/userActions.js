@@ -39,7 +39,7 @@ export const getUserDetail = (id) => {
       )
       .then(function (response) {
         dispatch({
-          type: GET_USERS_LIST,
+          type: GET_USER_DETAIL,
           payload: {
             data: response.data,
             errorMessage: false,
@@ -48,7 +48,7 @@ export const getUserDetail = (id) => {
       })
       .catch(function (error) {
         dispatch({
-          type: GET_USERS_LIST,
+          type: GET_USER_DETAIL,
           payload: {
             data: false,
             errorMessage: error.message,
