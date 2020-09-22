@@ -1,20 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import { Container } from "reactstrap";
 import FormComponent from "../components/FormComponent";
+import { connect } from "react-redux";
+import { postUserCreate } from "../actions/userActions";
 
-class CreateUserContainer extends Component {
-  handleSubmit(data) {
-    console.log(data);
-  }
-
-  render() {
-    return (
-      <Container>
-        Create user
-        <FormComponent onSubmit={data => this.handleSubmit(data)} />
-      </Container>
-    );
-  }
+function handleSubmit(data) {
+  console.log(data.dispatch(postUserCreate()));
 }
 
-export default CreateUserContainer;
+const CreateUserContainer = props => {
+  return (
+    <Container>
+      Create user
+      <FormComponent onSubmit={() => handleSubmit(props)} />
+    </Container>
+  );
+};
+
+export default connect()(CreateUserContainer);

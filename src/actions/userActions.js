@@ -2,73 +2,105 @@ import axios from "axios";
 
 export const GET_USERS_LIST = "GET_USERS_LIST";
 export const GET_USER_DETAIL = "GET_USER_DETAIL";
+export const POST_USER_CREATE = "POST_USER_CREATE";
 
 export const getUsersList = () => {
-  return (dispatch) => {
+  return dispatch => {
     axios
       .get("http://my-json-server.typicode.com/afifbasya/reactjs-redux/users")
-      .then(function (response) {
+      .then(function(response) {
         dispatch({
           type: GET_USERS_LIST,
           payload: {
             data: response.data,
-            errorMessage: false,
-          },
+            errorMessage: false
+          }
         });
       })
-      .catch(function (error) {
+      .catch(function(error) {
         dispatch({
           type: GET_USERS_LIST,
           payload: {
             data: false,
-            errorMessage: error.message,
-          },
+            errorMessage: error.message
+          }
         });
       })
-      .then(function () {
+      .then(function() {
         // always executed
       });
   };
 };
 
-export const getUserDetail = (id) => {
-  return (dispatch) => {
+export const getUserDetail = id => {
+  return dispatch => {
     axios
       .get(
         "http://my-json-server.typicode.com/afifbasya/reactjs-redux/users/" + id
       )
-      .then(function (response) {
+      .then(function(response) {
         dispatch({
           type: GET_USER_DETAIL,
           payload: {
             data: response.data,
-            errorMessage: false,
-          },
+            errorMessage: false
+          }
         });
       })
-      .catch(function (error) {
+      .catch(function(error) {
         dispatch({
           type: GET_USER_DETAIL,
           payload: {
             data: false,
-            errorMessage: error.message,
-          },
+            errorMessage: error.message
+          }
         });
       })
-      .then(function () {
+      .then(function() {
         // always executed
       });
   };
 };
 
-export const deleteUserDetail = (id) => {
-  return (dispatch) => {
+export const deleteUserDetail = id => {
+  return dispatch => {
     dispatch({
       type: GET_USER_DETAIL,
       payload: {
         data: false,
-        errorMessage: false,
-      },
+        errorMessage: false
+      }
     });
+  };
+};
+
+export const postUserCreate = data => {
+  return dispatch => {
+    axios
+      .post(
+        "http://my-json-server.typicode.com/afifbasya/reactjs-redux/users",
+        data
+      )
+      .then(function(response) {
+        dispatch({
+          type: POST_USER_CREATE,
+          payload: {
+            data: response.data,
+            errorMessage: false
+          }
+        });
+      })
+      .catch(function(error) {
+        dispatch({
+          type: POST_USER_CREATE,
+          payload: {
+            data: false,
+            errorMessage: error.message
+          }
+        });
+      })
+      .then(function() {
+        // always executed
+      });
   };
 };

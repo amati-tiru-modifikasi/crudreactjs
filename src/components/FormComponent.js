@@ -39,8 +39,10 @@ const renderField = ({
 );
 
 let FormComponent = props => {
+  const { handleSubmit } = props;
+
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <FormGroup>
         <Col md={6}>
           <FormGroup>

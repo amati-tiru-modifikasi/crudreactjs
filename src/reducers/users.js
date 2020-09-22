@@ -1,11 +1,17 @@
-import { GET_USERS_LIST, GET_USER_DETAIL } from "../actions/userActions";
+import {
+  GET_USERS_LIST,
+  GET_USER_DETAIL,
+  POST_USER_CREATE
+} from "../actions/userActions";
 
 const initialState = {
   getUsersList: false,
   errorUsersList: false,
   getUserDetail: false,
   errorUserDetail: false,
-  title: "Wahidev Academy ~ ATM",
+  getResponeDataUser: false,
+  errorResponeDataUser: false,
+  title: "Wahidev Academy ~ ATM"
 };
 
 const users = (state = initialState, action) => {
@@ -14,13 +20,20 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         getUsersList: action.payload.data,
-        errorUsersList: action.payload.errorMessage,
+        errorUsersList: action.payload.errorMessage
       };
     case GET_USER_DETAIL:
       return {
         ...state,
         getUserDetail: action.payload.data,
-        errorUserDetail: action.payload.errorMessage,
+        errorUserDetail: action.payload.errorMessage
+      };
+
+    case POST_USER_CREATE:
+      return {
+        ...state,
+        getResponeDataUser: action.payload.data,
+        errorResponeDataUser: action.payload.errorMessage
       };
 
     default:
