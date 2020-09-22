@@ -5,6 +5,9 @@ import { Row, Col, Label, Input, FormGroup, Button } from "reactstrap";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 
+// validasi
+import UserValidation from "../validations/UserValidation";
+
 const renderField = ({
   input,
   type,
@@ -96,6 +99,7 @@ let FormComponent = props => {
 
 FormComponent = reduxForm({
   form: "formCreateUser",
+  validate: UserValidation,
   enableReinitialize: true
 })(FormComponent);
 
