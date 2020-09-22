@@ -40,7 +40,7 @@ const renderField = ({
 
 let FormComponent = props => {
   return (
-    <form>
+    <form onSubmit={props.handleSubmit}>
       <FormGroup>
         <Col md={6}>
           <FormGroup>
