@@ -15,7 +15,7 @@ const renderField = ({
   label,
   disabled,
   readOnly,
-  meta: { touched, error, warning }
+  meta: { touched, error, warning },
 }) => (
   <Row>
     <Col md="12">
@@ -38,7 +38,7 @@ const renderField = ({
   </Row>
 );
 
-let FormComponent = props => {
+let FormComponent = (props) => {
   const { handleSubmit } = props;
 
   return (
@@ -102,7 +102,7 @@ let FormComponent = props => {
 FormComponent = reduxForm({
   form: "formCreateUser",
   validate: UserValidation,
-  enableReinitialize: true
+  enableReinitialize: true,
 })(FormComponent);
 
 export default connect()(FormComponent);
