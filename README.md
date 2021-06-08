@@ -1,4 +1,12 @@
-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-- This project have been followed with [CRUD APIS ReactJS by Wahidev](https://www.youtube.com/playlist?list=PLIan8aHxsPj1n-fDYopnjbaK55DhZqrmN)
-- This project have been [official source code by Afif Basya](https://github.com/afifbasya/crud-reactjs-redux)
-- This project just my [ATM](https://kutt.it/atm) [Project](https://topidesta.netlify.app/projek) for my knowledge about ReactJS
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Tutorial Link
+
+Tutorial ini didapatkan dari [Wahidev Akademi](http://go.topidesta.my.id/crud-redux) di Youtube Channel. 
+
+## Sourcecode Link
+
+https://github.com/afifbasya/crud-reactjs-redux.git
+
